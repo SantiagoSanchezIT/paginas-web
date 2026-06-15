@@ -1,0 +1,1217 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+	<head>
+
+		<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+				<title>NeoCity Challenge</title>
+
+				<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+					<style>
+
+						:root{
+						--bg:#050816;
+						--card:rgba(15,23,42,.7);
+						--cyan:#00d4ff;
+						--purple:#9d4edd;
+						--pink:#ff00c8;
+						--text:#ffffff;
+						--gray:#94a3b8;
+						}
+
+						*{
+						margin:0;
+						padding:0;
+						box-sizing:border-box;
+						font-family:Segoe UI,sans-serif;
+						}
+
+						html{
+						scroll-behavior:smooth;
+						}
+
+						body{
+						background:var(--bg);
+						color:var(--text);
+						overflow-x:hidden;
+						}
+
+						/* Fondo RGB */
+
+						body::before{
+						content:"";
+						position:fixed;
+						inset:0;
+						background:
+						radial-gradient(circle at 20% 20%, rgba(0,212,255,.15), transparent 30%),
+						radial-gradient(circle at 80% 30%, rgba(255,0,200,.12), transparent 30%),
+						radial-gradient(circle at 50% 80%, rgba(157,78,221,.15), transparent 30%);
+						z-index:-2;
+						}
+
+						/* Header */
+
+						header{
+						position:fixed;
+						width:100%;
+						top:0;
+						z-index:1000;
+						backdrop-filter:blur(15px);
+						background:rgba(5,8,22,.6);
+						}
+
+						nav{
+						max-width:1200px;
+						margin:auto;
+						display:flex;
+						justify-content:space-between;
+						align-items:center;
+						padding:20px;
+						}
+
+						.logo{
+						font-size:1.8rem;
+						font-weight:bold;
+						background:linear-gradient(90deg,var(--cyan),var(--pink));
+						-webkit-background-clip:text;
+						-webkit-text-fill-color:transparent;
+						}
+
+						nav ul{
+						display:flex;
+						list-style:none;
+						gap:25px;
+						}
+
+						nav a{
+						text-decoration:none;
+						color:white;
+						transition:.3s;
+						}
+
+						nav a:hover{
+						color:var(--cyan);
+						}
+
+						/* Hero */
+
+						.hero{
+						min-height:100vh;
+						display:flex;
+						align-items:center;
+						justify-content:center;
+						text-align:center;
+						padding:40px;
+
+						background:
+						linear-gradient(rgba(5,8,22,.75),rgba(5,8,22,.9)),
+						url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1600")
+						center/cover;
+						}
+
+						.hero-content{
+						max-width:900px;
+						}
+
+						.tag{
+						display:inline-block;
+						padding:12px 25px;
+						border-radius:50px;
+						margin-bottom:25px;
+
+						border:1px solid rgba(255,255,255,.2);
+
+						background:rgba(255,255,255,.05);
+
+						backdrop-filter:blur(10px);
+						}
+
+						.hero h1{
+						font-size:clamp(3rem,8vw,6rem);
+						margin-bottom:25px;
+
+						background:linear-gradient(
+						90deg,
+						var(--cyan),
+						var(--purple),
+						var(--pink)
+						);
+
+						-webkit-background-clip:text;
+						-webkit-text-fill-color:transparent;
+						}
+
+						.hero p{
+						color:var(--gray);
+						line-height:1.8;
+						font-size:1.2rem;
+						margin-bottom:40px;
+						}
+
+						.btn{
+						display:inline-block;
+						padding:15px 35px;
+						margin:10px;
+
+						border-radius:12px;
+
+						text-decoration:none;
+
+						color:white;
+
+						background:linear-gradient(
+						90deg,
+						var(--cyan),
+						var(--purple)
+						);
+
+						transition:.3s;
+						}
+
+						.btn:hover{
+						transform:translateY(-5px);
+						box-shadow:0 0 30px rgba(0,212,255,.4);
+						}
+
+						.btn-outline{
+						border:1px solid rgba(255,255,255,.2);
+						background:transparent;
+						}
+
+						/* Narrativa */
+
+						section{
+						max-width:1200px;
+						margin:auto;
+						padding:100px 20px;
+						}
+
+						.section-title{
+						font-size:3rem;
+						text-align:center;
+						margin-bottom:60px;
+						}
+
+						.story{
+
+						background:var(--card);
+
+						backdrop-filter:blur(20px);
+
+						border:1px solid rgba(255,255,255,.1);
+
+						border-radius:25px;
+
+						padding:50px;
+
+						line-height:2;
+
+						color:var(--gray);
+
+						font-size:1.1rem;
+						}
+
+						.story strong{
+						color:var(--cyan);
+						}
+
+						.story span{
+						color:var(--pink);
+						}
+
+						/* Glow */
+
+						.glow{
+						position:fixed;
+						width:400px;
+						height:400px;
+
+						background:var(--cyan);
+
+						filter:blur(220px);
+
+						opacity:.15;
+
+						pointer-events:none;
+						}
+
+						/* Responsive */
+
+						@media(max-width:768px){
+
+						nav{
+						flex-direction:column;
+						gap:15px;
+						}
+
+						nav ul{
+						flex-wrap:wrap;
+						justify-content:center;
+						}
+
+						}
+
+					</style>
+
+				</head>
+
+	<body>
+
+		<div class="glow" id="glow"></div>
+
+		<header>
+
+			<nav>
+
+				<div class="logo">
+					NeoCity Challenge
+				</div>
+
+				<ul>
+
+					<li>
+						<a href="#inicio">Inicio</a>
+					</li>
+
+					<li>
+						<a href="#narrativa">Historia</a>
+					</li>
+
+					<li>
+						<a href="#distritos">Distritos</a>
+					</li>
+
+					<li>
+						<a href="#cronograma">Cronograma</a>
+					</li>
+
+					<li>
+						<a href="#inscripcion">Inscripción</a>
+					</li>
+
+				</ul>
+
+			</nav>
+
+		</header>
+
+		<section class="hero" id="inicio">
+
+			<div class="hero-content">
+
+				<div class="tag">
+
+					Misión interactiva • Tecnología • Cooperación
+
+				</div>
+
+				<h1>
+
+					RESTAURÁ NEXUS
+
+				</h1>
+
+				<p>
+
+					NeoCity fue construida para conectar millones de vidas.
+					Pero una falla inesperada fragmentó el sistema que mantenía
+					la ciudad funcionando.
+
+					Ahora, equipos de agentes tecnológicos deberán enfrentarse
+					a desafíos físicos, digitales y estratégicos para recuperar
+					los fragmentos perdidos antes de que NeoCity colapse.
+
+					La ciudad necesita héroes.
+					La próxima misión podría comenzar con vos.
+
+				</p>
+
+				<a href="#inscripcion" class="btn">
+
+					Aceptar la misión
+
+				</a>
+
+				<a href="#narrativa" class="btn btn-outline">
+
+					Descubrir la historia
+
+				</a>
+
+			</div>
+
+		</section>
+
+		<section id="narrativa">
+
+			<h2 class="section-title">
+
+				La caída de NEXUS
+
+			</h2>
+
+			<div class="story">
+
+				<p>
+
+					Año <strong>2035</strong>.
+
+					NeoCity es una de las ciudades inteligentes más avanzadas de Argentina.
+					Su inteligencia central, conocida como <span>NEXUS</span>,
+					coordina la energía, la información pública y la infraestructura digital
+					que conecta a millones de ciudadanos.
+
+				</p>
+
+				<br>
+
+					<p>
+
+						Durante una actualización global del sistema, una anomalía desconocida
+						fragmentó información esencial y la dispersó a través de distintos
+						sectores de la ciudad.
+
+						Sin NEXUS, NeoCity comenzó a perder estabilidad.
+
+						Las comunicaciones fallaron.
+						Los protocolos de seguridad dejaron de responder.
+						Los datos críticos desaparecieron.
+
+					</p>
+
+					<br>
+
+						<p>
+
+							Ante esta crisis, una nueva generación de agentes fue convocada.
+
+							No serán espectadores.
+
+							Serán protagonistas.
+
+							Deberán correr, resolver enigmas, colaborar con sus compañeros
+							y tomar decisiones bajo presión para recuperar cada fragmento perdido.
+
+							Cada desafío superado reconstruirá una parte del sistema.
+
+							Cada decisión acercará a NeoCity a la salvación.
+
+						</p>
+
+						<br>
+
+							<p>
+
+								Solo aquellos equipos capaces de comunicarse, adaptarse y confiar
+								en sus compañeros lograrán restaurar el corazón digital de la ciudad.
+
+								<strong>
+
+									¿Estás listo para aceptar la misión?
+
+								</strong>
+
+							</p>
+
+						</div>
+
+		</section>
+		<!-- DISTRITOS -->
+
+		<section id="distritos">
+
+			<h2 class="section-title">
+				Los Distritos de NeoCity
+			</h2>
+
+			<div class="cards">
+
+				<div class="mission-card">
+
+					<div class="mission-icon">
+						🛡️
+					</div>
+
+					<h3>Distrito de Seguridad</h3>
+
+					<p>
+						El primer fragmento de NEXUS se encuentra protegido.
+						Los equipos deberán superar pruebas de coordinación,
+						precisión y confianza mutua.
+					</p>
+
+				</div>
+
+
+				<div class="mission-card">
+
+					<div class="mission-icon">
+						💻
+					</div>
+
+					<h3>Distrito Digital</h3>
+
+					<p>
+						Descifrá códigos QR, encontrá pistas ocultas y utilizá
+						herramientas tecnológicas para recuperar información perdida.
+					</p>
+
+				</div>
+
+
+				<div class="mission-card">
+
+					<div class="mission-icon">
+						🧩
+					</div>
+
+					<h3>Escape de Enigmas</h3>
+
+					<p>
+						Las respuestas no serán evidentes.
+						Combiná ideas, analizá información y resolvé acertijos
+						antes de que el tiempo se agote.
+					</p>
+
+				</div>
+
+
+				<div class="mission-card">
+
+					<div class="mission-icon">
+						⚡
+					</div>
+
+					<h3>Centro de Control</h3>
+
+					<p>
+						La misión definitiva.
+						Todos los fragmentos recuperados convergerán en el
+						desafío final para restaurar NEXUS.
+					</p>
+
+				</div>
+
+			</div>
+
+		</section>
+
+
+		<!-- CÓMO FUNCIONA -->
+
+		<section id="experiencia">
+
+			<h2 class="section-title">
+				Tu recorrido por NeoCity
+			</h2>
+
+			<div class="timeline">
+
+				<div class="timeline-item">
+					<span>01</span>
+					<h3>Registrate</h3>
+					<p>Recibí tu acreditación y conocé las reglas.</p>
+				</div>
+
+				<div class="timeline-item">
+					<span>02</span>
+					<h3>Formá tu equipo</h3>
+					<p>Distribuyan roles y preparen su estrategia.</p>
+				</div>
+
+				<div class="timeline-item">
+					<span>03</span>
+					<h3>Explorá NeoCity</h3>
+					<p>Recorré los distintos sectores del evento.</p>
+				</div>
+
+				<div class="timeline-item">
+					<span>04</span>
+					<h3>Recuperá fragmentos</h3>
+					<p>Cada misión restaurará parte de NEXUS.</p>
+				</div>
+
+				<div class="timeline-item">
+					<span>05</span>
+					<h3>Superá el desafío final</h3>
+					<p>Enfrentá la prueba más compleja del evento.</p>
+				</div>
+
+				<div class="timeline-item">
+					<span>06</span>
+					<h3>Convertite en Champion</h3>
+					<p>La ciudad recordará a quienes lograron salvarla.</p>
+				</div>
+
+			</div>
+
+		</section>
+
+
+		<!-- HABILIDADES -->
+
+		<section id="habilidades">
+
+			<h2 class="section-title">
+				Lo que desarrollarás
+			</h2>
+
+			<div class="cards">
+
+				<div class="skill-card">
+					<i class="fa-solid fa-brain"></i>
+					<h3>Pensamiento lógico</h3>
+					<p>Analizá situaciones y resolvé problemas.</p>
+				</div>
+
+				<div class="skill-card">
+					<i class="fa-solid fa-users"></i>
+					<h3>Trabajo en equipo</h3>
+					<p>Cooperación, empatía y liderazgo compartido.</p>
+				</div>
+
+				<div class="skill-card">
+					<i class="fa-solid fa-lightbulb"></i>
+					<h3>Creatividad</h3>
+					<p>Diseñá estrategias innovadoras.</p>
+				</div>
+
+				<div class="skill-card">
+					<i class="fa-solid fa-laptop-code"></i>
+					<h3>Competencias digitales</h3>
+					<p>Uso de QR y herramientas tecnológicas.</p>
+				</div>
+
+				<div class="skill-card">
+					<i class="fa-solid fa-stopwatch"></i>
+					<h3>Toma de decisiones</h3>
+					<p>Actuá bajo presión y administrá tiempos.</p>
+				</div>
+
+				<div class="skill-card">
+					<i class="fa-solid fa-comments"></i>
+					<h3>Comunicación</h3>
+					<p>Escuchá, coordiná y compartí ideas.</p>
+				</div>
+
+			</div>
+
+		</section>
+
+
+		<!-- SPONSORS -->
+
+		<section id="sponsors">
+
+			<h2 class="section-title">
+				Aliados de la misión
+			</h2>
+
+			<p class="sponsor-text">
+
+				NeoCity Challenge busca conectar instituciones educativas,
+				espacios culturales, organizaciones tecnológicas y empresas
+				comprometidas con la innovación y el aprendizaje.
+
+			</p>
+
+			<div class="sponsor-grid">
+
+				<div class="sponsor-box">
+					TU LOGO
+				</div>
+
+				<div class="sponsor-box">
+					TU LOGO
+				</div>
+
+				<div class="sponsor-box">
+					TU LOGO
+				</div>
+
+				<div class="sponsor-box">
+					TU LOGO
+				</div>
+
+			</div>
+
+		</section>
+
+
+		<style>
+
+			/* TARJETAS */
+
+			.cards{
+			display:grid;
+			grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+			gap:25px;
+			}
+
+			.mission-card,
+			.skill-card{
+
+			background:var(--card);
+
+			backdrop-filter:blur(20px);
+
+			border:1px solid rgba(255,255,255,.08);
+
+			border-radius:25px;
+
+			padding:35px;
+
+			transition:.3s;
+			}
+
+			.mission-card:hover,
+			.skill-card:hover{
+
+			transform:translateY(-10px);
+
+			box-shadow:0 0 35px rgba(0,212,255,.2);
+
+			}
+
+			.mission-icon{
+
+			font-size:3rem;
+
+			margin-bottom:20px;
+
+			}
+
+			.mission-card h3,
+			.skill-card h3{
+
+			margin-bottom:15px;
+
+			}
+
+			.mission-card p,
+			.skill-card p{
+
+			color:var(--gray);
+
+			line-height:1.8;
+
+			}
+
+			/* EXPERIENCIA */
+
+			.timeline{
+
+			display:grid;
+
+			grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+			gap:25px;
+
+			}
+
+			.timeline-item{
+
+			background:var(--card);
+
+			border-radius:25px;
+
+			padding:35px;
+
+			text-align:center;
+
+			border:1px solid rgba(255,255,255,.08);
+
+			}
+
+			.timeline-item span{
+
+			font-size:3rem;
+
+			font-weight:bold;
+
+			color:var(--cyan);
+
+			}
+
+			.timeline-item h3{
+
+			margin:20px 0;
+
+			}
+
+			.timeline-item p{
+
+			color:var(--gray);
+
+			}
+
+			/* HABILIDADES */
+
+			.skill-card{
+
+			text-align:center;
+
+			}
+
+			.skill-card i{
+
+			font-size:3rem;
+
+			color:var(--pink);
+
+			margin-bottom:20px;
+
+			}
+
+			/* SPONSORS */
+
+			.sponsor-text{
+
+			text-align:center;
+
+			color:var(--gray);
+
+			max-width:800px;
+
+			margin:auto auto 50px;
+
+			line-height:1.8;
+
+			}
+
+			.sponsor-grid{
+
+			display:grid;
+
+			grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+			gap:25px;
+
+			}
+
+			.sponsor-box{
+
+			background:var(--card);
+
+			border:1px solid rgba(255,255,255,.08);
+
+			border-radius:25px;
+
+			height:140px;
+
+			display:flex;
+
+			justify-content:center;
+
+			align-items:center;
+
+			font-size:1.5rem;
+
+			color:rgba(255,255,255,.5);
+
+			transition:.3s;
+
+			}
+
+			.sponsor-box:hover{
+
+			border-color:var(--cyan);
+
+			box-shadow:0 0 30px rgba(0,212,255,.2);
+
+			}
+
+		</style>
+		<style>
+		
+		.event-timeline,
+.footer-icons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:25px;
+    justify-content:center;
+}
+
+.event-card,
+.award-card{
+    background:var(--card);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:25px;
+    padding:35px;
+    width:280px;
+    transition:.3s;
+}
+
+.event-card:hover,
+.award-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 35px rgba(0,212,255,.2);
+}
+
+.event-card span{
+    color:var(--cyan);
+    font-size:2rem;
+    font-weight:bold;
+}
+
+.event-card h3,
+.award-card h3{
+    margin:20px 0;
+}
+
+.event-card p,
+.award-card p{
+    color:var(--gray);
+    line-height:1.8;
+}
+
+.register-box{
+    max-width:700px;
+    margin:auto;
+    text-align:center;
+    background:var(--card);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:30px;
+    padding:50px;
+}
+
+.register-box p{
+    color:var(--gray);
+    margin:20px 0 40px;
+}
+
+.register-box form{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.register-box input{
+    padding:18px;
+    border:none;
+    border-radius:12px;
+    background:#111827;
+    color:white;
+}
+
+.register-box button{
+    padding:18px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(
+        90deg,
+        var(--cyan),
+        var(--purple)
+    );
+    color:white;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.register-box button:hover{
+    transform:translateY(-5px);
+}
+
+footer{
+    margin-top:100px;
+    padding:60px 20px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+.footer-content p{
+    color:var(--gray);
+    max-width:700px;
+    margin:20px auto;
+    line-height:1.8;
+}
+
+.footer-icons a{
+    color:white;
+    font-size:2rem;
+    margin:10px;
+    transition:.3s;
+}
+
+.footer-icons a:hover{
+    color:var(--cyan);
+}
+
+.copyright{
+    margin-top:40px;
+}
+</style>
+		
+		<!-- CRONOGRAMA -->
+
+<section id="cronograma">
+
+    <h2 class="section-title">
+        Cronograma de la Operación NEXUS
+    </h2>
+
+    <div class="event-timeline">
+
+        <div class="event-card">
+            <span>09:00</span>
+            <h3>Acreditación</h3>
+            <p>
+                Los agentes reciben sus credenciales y conocen las reglas de la misión.
+            </p>
+        </div>
+
+        <div class="event-card">
+            <span>09:30</span>
+            <h3>Briefing Inicial</h3>
+            <p>
+                Se revela la caída de NEXUS y comienza oficialmente la operación.
+            </p>
+        </div>
+
+        <div class="event-card">
+            <span>10:00</span>
+            <h3>Distritos Abiertos</h3>
+            <p>
+                Los equipos recorren NeoCity recuperando fragmentos del sistema.
+            </p>
+        </div>
+
+        <div class="event-card">
+            <span>13:00</span>
+            <h3>Centro de Control</h3>
+            <p>
+                El desafío final pondrá a prueba todo lo aprendido.
+            </p>
+        </div>
+
+        <div class="event-card">
+            <span>14:00</span>
+            <h3>Restauración de NEXUS</h3>
+            <p>
+                Se anuncian los equipos vencedores y la ciudad vuelve a la normalidad.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PREMIACIÓN -->
+
+<section id="premiacion">
+
+    <h2 class="section-title">
+        NeoCity Champion
+    </h2>
+
+    <div class="cards">
+
+        <div class="award-card">
+            <h3>🏆 Primer Puesto</h3>
+
+            <p>
+                Trofeo NeoCity Champion y medallas para todo el equipo.
+            </p>
+        </div>
+
+        <div class="award-card">
+            <h3>🥈 Segundo Puesto</h3>
+
+            <p>
+                Medallas de reconocimiento por desempeño destacado.
+            </p>
+        </div>
+
+        <div class="award-card">
+            <h3>🥉 Tercer Puesto</h3>
+
+            <p>
+                Certificado de mérito y reconocimiento especial.
+            </p>
+        </div>
+
+        <div class="award-card">
+            <h3>🤝 Premio Inclusión</h3>
+
+            <p>
+                Distinción al mejor trabajo colaborativo y solidario.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- INSCRIPCIÓN -->
+
+<section id="inscripcion">
+
+    <h2 class="section-title">
+        Aceptá la misión
+    </h2>
+
+    <div class="register-box">
+
+        <h3>
+            NeoCity necesita nuevos agentes.
+        </h3>
+
+        <p>
+            Formá tu equipo y preparate para restaurar el sistema NEXUS.
+        </p>
+
+        <form id="registerForm">
+
+            <input
+                type="text"
+                placeholder="Nombre y Apellido"
+                required>
+
+            <input
+                type="email"
+                placeholder="Correo Electrónico"
+                required>
+
+            <input
+                type="text"
+                placeholder="Nombre del Equipo"
+                required>
+
+            <button type="submit">
+                Unirme a la misión
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <h2>
+            NeoCity Challenge
+        </h2>
+
+        <p>
+
+            Una experiencia inmersiva donde la tecnología,
+            la cooperación y la creatividad se convierten
+            en las herramientas para salvar una ciudad.
+
+        </p>
+
+        <div class="footer-icons">
+
+            <a href="#">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+
+            <a href="#">
+                <i class="fa-brands fa-facebook"></i>
+            </a>
+
+            <a href="#">
+                <i class="fa-brands fa-youtube"></i>
+            </a>
+
+            <a href="#">
+                <i class="fa-brands fa-discord"></i>
+            </a>
+
+        </div>
+
+        <p class="copyright">
+            © 2026 NeoCity Challenge · Todos los derechos reservados
+        </p>
+
+    </div>
+
+</footer>
+		<script>
+
+			/* Brillo RGB siguiendo el mouse */
+
+			const glow = document.getElementById("glow");
+
+			document.addEventListener("mousemove", e => {
+
+			glow.style.left = (e.clientX - 200) + "px";
+			glow.style.top = (e.clientY - 200) + "px";
+
+			});
+
+
+			/* Formulario */
+
+			document
+			.getElementById("registerForm")
+			.addEventListener("submit", function(e){
+
+			e.preventDefault();
+
+			alert(
+			"¡Bienvenido, agente!\n\nTu equipo ha sido registrado para la Operación NEXUS."
+			);
+
+			});
+
+
+			/* Animaciones al hacer scroll */
+
+			const observer = new IntersectionObserver(entries => {
+
+			entries.forEach(entry => {
+
+			if(entry.isIntersecting){
+
+			entry.target.animate(
+
+			[
+			{
+			opacity:0,
+			transform:"translateY(40px)"
+			},
+
+			{
+			opacity:1,
+			transform:"translateY(0)"
+			}
+
+			],
+
+			{
+			duration:700,
+			fill:"forwards"
+			}
+
+			);
+
+			}
+
+			});
+
+			});
+
+			document.querySelectorAll("section").forEach(section => {
+
+			section.style.opacity = 0;
+
+			observer.observe(section);
+
+			});
+
+		</script>
+
+	</body>
+</html>
