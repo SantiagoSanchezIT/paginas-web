@@ -1,274 +1,1157 @@
 <!DOCTYPE html>
 <html lang="es">
-
 	<head>
 
 		<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-				<title>NeoCity Challenge</title>
+				<title>NeoCity Challenge | Misión NEXUS</title>
 
-				<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+				<link rel="preconnect" href="https://fonts.googleapis.com">
+					<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 
-					<style>
+						<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
 
-						:root{
-						--bg:#050816;
-						--card:rgba(15,23,42,.7);
-						--cyan:#00d4ff;
-						--purple:#9d4edd;
-						--pink:#ff00c8;
-						--text:#ffffff;
-						--gray:#94a3b8;
-						}
+							<link rel="stylesheet"
+							href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-						*{
-						margin:0;
-						padding:0;
-						box-sizing:border-box;
-						font-family:Segoe UI,sans-serif;
-						}
+								<style>
+									/* NEOCITY CHAMPION */
+									.trophy img{
+									width:120px;
+									height:auto;
+									display:block;
+									margin:auto;
+									filter:drop-shadow(0 0 20px rgba(255,215,0,.5));
+									}
 
-						html{
-						scroll-behavior:smooth;
-						}
+									.champion-card{
 
-						body{
-						background:var(--bg);
-						color:var(--text);
-						overflow-x:hidden;
-						}
+									position:relative;
 
-						/* Fondo RGB */
+									overflow:hidden;
 
-						body::before{
-						content:"";
-						position:fixed;
-						inset:0;
-						background:
-						radial-gradient(circle at 20% 20%, rgba(0,212,255,.15), transparent 30%),
-						radial-gradient(circle at 80% 30%, rgba(255,0,200,.12), transparent 30%),
-						radial-gradient(circle at 50% 80%, rgba(157,78,221,.15), transparent 30%);
-						z-index:-2;
-						}
+									max-width:750px;
 
-						/* Header */
+									margin:auto;
 
-						header{
-						position:fixed;
-						width:100%;
-						top:0;
-						z-index:1000;
-						backdrop-filter:blur(15px);
-						background:rgba(5,8,22,.6);
-						}
+									padding:60px 45px;
 
-						nav{
-						max-width:1200px;
-						margin:auto;
-						display:flex;
-						justify-content:space-between;
-						align-items:center;
-						padding:20px;
-						}
+									text-align:center;
 
-						.logo{
-						font-size:1.8rem;
-						font-weight:bold;
-						background:linear-gradient(90deg,var(--cyan),var(--pink));
-						-webkit-background-clip:text;
-						-webkit-text-fill-color:transparent;
-						}
+									border-radius:30px;
 
-						nav ul{
-						display:flex;
-						list-style:none;
-						gap:25px;
-						}
+									background:linear-gradient(
+									180deg,
+									rgba(20,20,20,.98),
+									rgba(5,5,5,.98)
+									);
 
-						nav a{
-						text-decoration:none;
-						color:white;
-						transition:.3s;
-						}
+									border:2px solid rgba(255,210,0,.25);
 
-						nav a:hover{
-						color:var(--cyan);
-						}
+									transition:.4s;
 
-						/* Hero */
+									}
 
-						.hero{
-						min-height:100vh;
-						display:flex;
-						align-items:center;
-						justify-content:center;
-						text-align:center;
-						padding:40px;
+									/* Línea dorada superior */
 
-						background:
-						linear-gradient(rgba(5,8,22,.75),rgba(5,8,22,.9)),
-						url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1600")
-						center/cover;
-						}
+									.champion-card::before{
 
-						.hero-content{
-						max-width:900px;
-						}
+									content:"";
 
-						.tag{
-						display:inline-block;
-						padding:12px 25px;
-						border-radius:50px;
-						margin-bottom:25px;
+									position:absolute;
 
-						border:1px solid rgba(255,255,255,.2);
+									top:0;
 
-						background:rgba(255,255,255,.05);
+									left:0;
 
-						backdrop-filter:blur(10px);
-						}
+									width:100%;
 
-						.hero h1{
-						font-size:clamp(3rem,8vw,6rem);
-						margin-bottom:25px;
+									height:5px;
 
-						background:linear-gradient(
-						90deg,
-						var(--cyan),
-						var(--purple),
-						var(--pink)
-						);
+									background:linear-gradient(
+									90deg,
+									#ffd700,
+									#fff176,
+									#ffd700
+									);
 
-						-webkit-background-clip:text;
-						-webkit-text-fill-color:transparent;
-						}
+									}
 
-						.hero p{
-						color:var(--gray);
-						line-height:1.8;
-						font-size:1.2rem;
-						margin-bottom:40px;
-						}
+									/* Hover */
 
-						.btn{
-						display:inline-block;
-						padding:15px 35px;
-						margin:10px;
+									.champion-card:hover{
 
-						border-radius:12px;
+									transform:translateY(-10px);
 
-						text-decoration:none;
+									border-color:#ffd700;
 
-						color:white;
+									box-shadow:
+									0 0 25px rgba(255,215,0,.20),
+									0 0 45px rgba(255,215,0,.12);
 
-						background:linear-gradient(
-						90deg,
-						var(--cyan),
-						var(--purple)
-						);
+									}
+									/* EXPERIENCIAS DEL ANIVERSARIO */
 
-						transition:.3s;
-						}
+									.experience-grid{
 
-						.btn:hover{
-						transform:translateY(-5px);
-						box-shadow:0 0 30px rgba(0,212,255,.4);
-						}
+									display:grid;
 
-						.btn-outline{
-						border:1px solid rgba(255,255,255,.2);
-						background:transparent;
-						}
+									grid-template-columns:repeat(auto-fit,minmax(280px,320px));
 
-						/* Narrativa */
+									justify-content:center;
 
-						section{
-						max-width:1200px;
-						margin:auto;
-						padding:100px 20px;
-						}
+									gap:35px;
 
-						.section-title{
-						font-size:3rem;
-						text-align:center;
-						margin-bottom:60px;
-						}
+									}
 
-						.story{
+									.experience-card{
 
-						background:var(--card);
+									position:relative;
 
-						backdrop-filter:blur(20px);
+									overflow:hidden;
 
-						border:1px solid rgba(255,255,255,.1);
+									min-height:280px;
 
-						border-radius:25px;
+									padding:40px 30px;
 
-						padding:50px;
+									border-radius:25px;
 
-						line-height:2;
+									background:linear-gradient(
+									180deg,
+									rgba(8,15,8,.98),
+									rgba(2,6,2,.98)
+									);
 
-						color:var(--gray);
+									border:1px solid rgba(0,255,128,.18);
 
-						font-size:1.1rem;
-						}
+									backdrop-filter:blur(15px);
 
-						.story strong{
-						color:var(--cyan);
-						}
+									text-align:center;
 
-						.story span{
-						color:var(--pink);
-						}
+									display:flex;
 
-						/* Glow */
+									flex-direction:column;
 
-						.glow{
-						position:fixed;
-						width:400px;
-						height:400px;
+									justify-content:center;
 
-						background:var(--cyan);
+									align-items:center;
 
-						filter:blur(220px);
+									transition:.4s;
 
-						opacity:.15;
+									}
 
-						pointer-events:none;
-						}
+									/* Línea superior verde */
 
-						/* Responsive */
+									.experience-card::before{
 
-						@media(max-width:768px){
+									content:"";
 
-						nav{
-						flex-direction:column;
-						gap:15px;
-						}
+									position:absolute;
 
-						nav ul{
-						flex-wrap:wrap;
-						justify-content:center;
-						}
+									top:0;
 
-						}
+									left:0;
 
-					</style>
+									width:100%;
 
-				</head>
+									height:4px;
+
+									background:linear-gradient(
+									90deg,
+									#00ff88,
+									#5cffb5,
+									#00ff88
+									);
+
+									}
+
+									/* Hover */
+
+									.experience-card:hover{
+
+									transform:translateY(-12px);
+
+									border-color:#00ff88;
+
+									box-shadow:
+									0 0 20px rgba(0,255,136,.20),
+									0 0 40px rgba(0,255,136,.12);
+
+									}
+
+									/* Íconos */
+
+									.experience-card i{
+
+									font-size:3.2rem;
+
+									margin-bottom:25px;
+
+									color:#00ff88;
+
+									text-shadow:
+									0 0 15px rgba(0,255,136,.5);
+
+									}
+
+									/* Títulos */
+
+									.experience-card h3{
+
+									margin-bottom:15px;
+
+									font-family:'Orbitron',sans-serif;
+
+									color:#ffffff;
+
+									text-transform:uppercase;
+
+									letter-spacing:1px;
+
+									}
+
+									/* Texto */
+
+									.experience-card p{
+
+									color:#a7c7b5;
+
+									line-height:1.8;
+
+									font-size:.95rem;
+
+									}
+
+									/* Responsive */
+
+									@media(max-width:768px){
+
+									.experience-grid{
+
+									grid-template-columns:1fr;
+
+									}
+
+									}
+									/* LO QUE DESARROLLARÁS */
+
+									.cards{
+
+									display:grid;
+
+									grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+									gap:30px;
+
+									}
+
+									.skill-card{
+
+									position:relative;
+
+									overflow:hidden;
+
+									padding:35px 30px;
+
+									border-radius:25px;
+
+									background:linear-gradient(
+									180deg,
+									rgba(10,15,30,.98),
+									rgba(3,7,18,.98)
+									);
+
+									border:1px solid rgba(0,150,255,.18);
+
+									backdrop-filter:blur(15px);
+
+									transition:.4s;
+
+									text-align:center;
+
+									}
+
+									/* Línea luminosa superior */
+
+									.skill-card::before{
+
+									content:"";
+
+									position:absolute;
+
+									top:0;
+
+									left:0;
+
+									width:100%;
+
+									height:4px;
+
+									background:linear-gradient(
+									90deg,
+									#00a2ff,
+									#42c8ff,
+									#00a2ff
+									);
+
+									}
+
+									/* Efecto hover */
+
+									.skill-card:hover{
+
+									transform:translateY(-12px);
+
+									border-color:#00b7ff;
+
+									box-shadow:
+									0 0 20px rgba(0,162,255,.20),
+									0 0 40px rgba(0,162,255,.12);
+
+									}
+
+									/* Íconos */
+
+									.skill-card i{
+
+									font-size:3rem;
+
+									margin-bottom:25px;
+
+									color:#25b8ff;
+
+									text-shadow:
+									0 0 15px rgba(37,184,255,.5);
+
+									}
+
+									/* Títulos */
+
+									.skill-card h3{
+
+									margin-bottom:15px;
+
+									font-family:'Orbitron',sans-serif;
+
+									font-size:1.2rem;
+
+									color:#ffffff;
+
+									text-transform:uppercase;
+
+									letter-spacing:1px;
+
+									}
+
+									/* Descripción */
+
+									.skill-card p{
+
+									color:#9bb3c9;
+
+									line-height:1.8;
+
+									font-size:.95rem;
+
+									}
+
+									/* Responsive */
+
+									@media(max-width:768px){
+
+									.cards{
+
+									grid-template-columns:1fr;
+
+									}
+
+									}
+									/* MISIONES - ALERTA NEXUS */
+
+									.missions-grid{
+
+									display:grid;
+
+									grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+									gap:30px;
+
+									}
+
+									.mission-card{
+
+									position:relative;
+
+									overflow:hidden;
+
+									background:linear-gradient(
+									180deg,
+									rgba(18,18,18,.95),
+									rgba(5,5,5,.95)
+									);
+
+									border:1px solid rgba(255,0,0,.25);
+
+									border-radius:25px;
+
+									padding:35px;
+
+									transition:.4s;
+
+									}
+
+									.mission-card::before{
+
+									content:"";
+
+									position:absolute;
+
+									top:0;
+
+									left:0;
+
+									width:100%;
+
+									height:4px;
+
+									background:linear-gradient(
+									90deg,
+									#ff0000,
+									#ff3c3c,
+									#ff0000
+									);
+
+									}
+
+									.mission-card:hover{
+
+									transform:translateY(-12px);
+
+									border-color:#ff2a2a;
+
+									box-shadow:
+									0 0 20px rgba(255,0,0,.25),
+									0 0 40px rgba(255,0,0,.15);
+
+									}
+
+									.mission-alert{
+
+									display:inline-block;
+
+									padding:8px 15px;
+
+									margin-bottom:20px;
+
+									border-radius:50px;
+
+									background:rgba(255,0,0,.12);
+
+									border:1px solid rgba(255,0,0,.3);
+
+									color:#ff5555;
+
+									font-size:.8rem;
+
+									font-weight:700;
+
+									letter-spacing:2px;
+
+									}
+
+									.mission-icon{
+
+									font-size:3.2rem;
+
+									margin-bottom:20px;
+
+									}
+
+									.mission-card h3{
+
+									font-family:'Orbitron',sans-serif;
+
+									margin-bottom:18px;
+
+									color:#ffffff;
+
+									text-transform:uppercase;
+
+									}
+
+									.mission-card p{
+
+									color:#b5b5b5;
+
+									line-height:1.9;
+
+									}
+									/* TITULOS FUTURISTAS */
+
+									.section-header{
+
+									text-align:center;
+
+									margin-bottom:60px;
+
+									}
+
+									.section-label{
+
+									display:inline-block;
+
+									padding:8px 18px;
+
+									border-radius:50px;
+
+									margin-bottom:20px;
+
+									font-size:.85rem;
+
+									letter-spacing:3px;
+
+									font-weight:600;
+
+									color:var(--cyan);
+
+									background:rgba(0,212,255,.08);
+
+									border:1px solid rgba(0,212,255,.25);
+
+									backdrop-filter:blur(10px);
+
+									}
+
+									.section-title{
+
+									font-family:'Orbitron',sans-serif;
+
+									font-size:clamp(2.5rem,5vw,4rem);
+
+									font-weight:800;
+
+									margin-bottom:20px;
+
+									text-transform:uppercase;
+
+									letter-spacing:4px;
+
+									background:linear-gradient(
+									90deg,
+									var(--cyan),
+									var(--purple),
+									var(--pink)
+									);
+
+									-webkit-background-clip:text;
+
+									-webkit-text-fill-color:transparent;
+
+									text-shadow:
+									0 0 20px rgba(0,212,255,.25),
+									0 0 35px rgba(157,78,221,.2);
+
+									}
+
+									.section-line{
+
+									width:180px;
+
+									height:4px;
+
+									margin:auto;
+
+									border-radius:50px;
+
+									background:linear-gradient(
+									90deg,
+									transparent,
+									var(--cyan),
+									var(--purple),
+									var(--pink),
+									transparent
+									);
+
+									box-shadow:
+									0 0 20px rgba(0,212,255,.4),
+									0 0 30px rgba(255,0,200,.25);
+
+									}
+									.schedule-grid{
+
+									display:grid;
+
+									grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+									gap:30px;
+
+									}
+
+									.schedule-card{
+
+									background:var(--card);
+
+									backdrop-filter:blur(20px);
+
+									border:1px solid rgba(255,255,255,.08);
+
+									border-radius:25px;
+
+									padding:35px;
+
+									transition:.3s;
+
+									}
+
+									.schedule-card:hover{
+
+									transform:translateY(-10px);
+
+									border-color:var(--cyan);
+
+									box-shadow:0 0 30px rgba(0,212,255,.2);
+
+									}
+
+									.schedule-card h3{
+
+									margin-bottom:20px;
+
+									color:var(--cyan);
+
+									font-family:'Orbitron',sans-serif;
+
+									}
+
+									.turno{
+
+									padding:12px 15px;
+
+									margin-bottom:12px;
+
+									border-radius:12px;
+
+									background:rgba(255,255,255,.05);
+
+									}
+
+									.turno strong{
+
+									color:var(--pink);
+
+									}
+
+									.schedule-card p{
+
+									margin-top:20px;
+
+									color:var(--gray);
+
+									line-height:1.8;
+
+									}
+									/* HABILIDADES */
+
+									.skills-grid{
+									display:grid;
+									grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+									gap:25px;
+									}
+
+									.skill-card{
+									background:var(--card);
+									border:1px solid rgba(255,255,255,.08);
+									border-radius:25px;
+									padding:35px;
+									text-align:center;
+									backdrop-filter:blur(20px);
+									transition:.3s;
+									}
+
+									.skill-card:hover{
+									transform:translateY(-10px);
+									box-shadow:0 0 30px rgba(0,212,255,.2);
+									}
+
+									.skill-icon{
+									font-size:3rem;
+									margin-bottom:20px;
+									}
+
+									.skill-card p{
+									color:var(--gray);
+									line-height:1.8;
+									}
+
+									/* GALERÍA */
+
+									.gallery-grid{
+									display:grid;
+									grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+									gap:20px;
+									}
+
+									.gallery-grid img{
+									width:100%;
+									height:250px;
+									object-fit:cover;
+									border-radius:20px;
+									transition:.3s;
+									}
+
+									.gallery-grid img:hover{
+									transform:scale(1.03);
+									box-shadow:0 0 25px rgba(255,0,200,.25);
+									}
+
+									/* PREMIACIÓN */
+
+									.champion-card{
+									max-width:700px;
+									margin:auto;
+									text-align:center;
+									background:var(--card);
+									padding:50px;
+									border-radius:25px;
+									border:1px solid rgba(255,255,255,.08);
+									}
+
+									.trophy{
+									font-size:5rem;
+									margin-bottom:20px;
+									}
+
+									/* TERMINAL */
+
+									.terminal{
+									max-width:700px;
+									margin:auto;
+									background:var(--card);
+									border:1px solid rgba(255,255,255,.08);
+									border-radius:25px;
+									overflow:hidden;
+									}
+
+									.terminal-header{
+									padding:20px;
+									background:rgba(255,255,255,.05);
+									color:var(--cyan);
+									font-weight:bold;
+									}
+
+									.terminal form{
+									padding:35px;
+									display:flex;
+									flex-direction:column;
+									gap:20px;
+									}
+
+									.terminal input{
+									padding:15px;
+									border-radius:12px;
+									border:1px solid rgba(255,255,255,.1);
+									background:rgba(255,255,255,.04);
+									color:white;
+									}
+
+									.terminal button{
+									padding:15px;
+									border:none;
+									border-radius:12px;
+									cursor:pointer;
+									color:white;
+									background:linear-gradient(
+									90deg,
+									var(--cyan),
+									var(--purple)
+									);
+									transition:.3s;
+									}
+
+									.terminal button:hover{
+									transform:translateY(-5px);
+									box-shadow:0 0 30px rgba(0,212,255,.35);
+									}
+
+									/* FOOTER */
+
+									footer{
+									padding:60px 20px;
+									text-align:center;
+									margin-top:80px;
+									border-top:1px solid rgba(255,255,255,.08);
+									}
+
+									.footer-logo{
+									display:flex;
+									justify-content:center;
+									align-items:center;
+									gap:15px;
+									margin-bottom:25px;
+									}
+
+									.footer-logo img{
+									height:50px;
+									}
+
+									.footer-social{
+									margin:30px 0;
+									}
+
+									.footer-social i{
+									font-size:2rem;
+									margin:0 15px;
+									cursor:pointer;
+									transition:.3s;
+									}
+
+									.footer-social i:hover{
+									color:var(--cyan);
+									transform:translateY(-5px);
+									}
+
+									footer p{
+									color:var(--gray);
+									line-height:1.8;
+									}
+									:root{
+									--bg:#050816;
+									--card:rgba(15,23,42,.7);
+									--cyan:#00d4ff;
+									--purple:#9d4edd;
+									--pink:#ff00c8;
+									--text:#ffffff;
+									--gray:#94a3b8;
+									}
+
+									*{
+									margin:0;
+									padding:0;
+									box-sizing:border-box;
+									font-family:'Segoe UI',sans-serif;
+									}
+
+									html{
+									scroll-behavior:smooth;
+									}
+
+									body{
+									background:var(--bg);
+									color:var(--text);
+									overflow-x:hidden;
+									}
+
+									/* Fondo RGB */
+
+									body::before{
+									content:"";
+									position:fixed;
+									inset:0;
+
+									background:
+									radial-gradient(circle at 20% 20%, rgba(0,212,255,.15), transparent 30%),
+									radial-gradient(circle at 80% 30%, rgba(255,0,200,.12), transparent 30%),
+									radial-gradient(circle at 50% 80%, rgba(157,78,221,.15), transparent 30%);
+
+									z-index:-2;
+									}
+
+									/* Glow */
+
+									.glow{
+									position:fixed;
+									width:400px;
+									height:400px;
+									background:var(--cyan);
+									filter:blur(220px);
+									opacity:.12;
+									pointer-events:none;
+									z-index:-1;
+									top:-120px;
+									left:-120px;
+									}
+
+									/* HEADER */
+
+									header{
+									position:fixed;
+									width:100%;
+									top:0;
+									z-index:1000;
+
+									backdrop-filter:blur(15px);
+
+									background:rgba(5,8,22,.6);
+
+									border-bottom:1px solid rgba(255,255,255,.08);
+									}
+
+									nav{
+									max-width:1200px;
+									margin:auto;
+
+									display:flex;
+									justify-content:space-between;
+									align-items:center;
+
+									padding:20px;
+									}
+
+									.logo-container{
+									display:flex;
+									align-items:center;
+									gap:15px;
+									}
+
+									.logo-container img{
+									height:50px;
+									width:auto;
+									}
+
+									.logo-text{
+
+									font-family:'Orbitron',sans-serif;
+
+									font-size:1.8rem;
+
+									font-weight:800;
+
+									background:linear-gradient(
+									90deg,
+									var(--cyan),
+									var(--pink)
+									);
+
+									-webkit-background-clip:text;
+									-webkit-text-fill-color:transparent;
+									}
+
+									nav ul{
+									display:flex;
+									list-style:none;
+									gap:25px;
+									}
+
+									nav a{
+									text-decoration:none;
+									color:white;
+									transition:.3s;
+									}
+
+									nav a:hover{
+									color:var(--cyan);
+									}
+
+									/* HERO */
+
+									.hero{
+
+									min-height:100vh;
+
+									display:flex;
+									align-items:center;
+									justify-content:center;
+
+									text-align:center;
+
+									padding:120px 20px 40px;
+
+									background:
+
+									linear-gradient(
+									rgba(5,8,22,.75),
+									rgba(5,8,22,.92)
+									),
+
+									url("https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1600")
+									center/cover;
+									}
+
+									.hero-content{
+									max-width:950px;
+									}
+
+									.tag{
+
+									display:inline-block;
+
+									padding:12px 25px;
+
+									margin-bottom:30px;
+
+									border-radius:50px;
+
+									border:1px solid rgba(255,255,255,.2);
+
+									background:rgba(255,255,255,.05);
+
+									backdrop-filter:blur(10px);
+									}
+
+									.hero h1{
+
+									font-family:'Orbitron',sans-serif;
+
+									font-size:clamp(3rem,8vw,6rem);
+
+									line-height:1.1;
+
+									margin-bottom:25px;
+
+									background:linear-gradient(
+									90deg,
+									var(--cyan),
+									var(--purple),
+									var(--pink)
+									);
+
+									-webkit-background-clip:text;
+									-webkit-text-fill-color:transparent;
+									}
+
+									.hero p{
+
+									color:var(--gray);
+
+									line-height:2;
+
+									font-size:1.15rem;
+
+									margin-bottom:40px;
+									}
+
+									.btn{
+
+									display:inline-block;
+
+									padding:15px 35px;
+
+									margin:10px;
+
+									border-radius:12px;
+
+									text-decoration:none;
+
+									transition:.3s;
+									}
+
+									.btn-primary{
+
+									color:white;
+
+									background:linear-gradient(
+									90deg,
+									var(--cyan),
+									var(--purple)
+									);
+									}
+
+									.btn-secondary{
+
+									color:white;
+
+									border:1px solid rgba(255,255,255,.2);
+
+									background:rgba(255,255,255,.05);
+									}
+
+									.btn:hover{
+
+									transform:translateY(-5px);
+
+									box-shadow:0 0 30px rgba(0,212,255,.4);
+									}
+
+									/* NARRATIVA */
+
+									section{
+									max-width:1200px;
+									margin:auto;
+									padding:100px 20px;
+									}
+
+									.section-title{
+
+									font-family:'Orbitron',sans-serif;
+
+									font-size:3rem;
+
+									text-align:center;
+
+									margin-bottom:60px;
+									}
+
+									.story{
+
+									background:var(--card);
+
+									backdrop-filter:blur(20px);
+
+									border:1px solid rgba(255,255,255,.1);
+
+									border-radius:25px;
+
+									padding:50px;
+
+									line-height:2;
+
+									color:var(--gray);
+
+									font-size:1.1rem;
+									}
+
+									.story strong{
+									color:var(--cyan);
+									}
+
+									.story span{
+									color:var(--pink);
+									}
+
+									@media(max-width:768px){
+
+									nav{
+									flex-direction:column;
+									gap:15px;
+									}
+
+									nav ul{
+									flex-wrap:wrap;
+									justify-content:center;
+									}
+
+									.logo-text{
+									font-size:1.4rem;
+									}
+
+									}
+
+								</style>
+
+							</head>
 
 	<body>
 
-		<div class="glow" id="glow"></div>
+		<div class="glow"></div>
 
 		<header>
 
 			<nav>
 
-				<div class="logo">
-					NeoCity Challenge
-				</div>
+				<div class="logo-container">
+
+					<!-- Reemplazá logo.png por el logo del Parque de la Costa -->
+
+					<img src="https://iconape.com/wp-content/files/ss/245951/png/245951.png" alt="Parque de la Costa">
+
+						<div class="logo-text">
+
+							NeoCity Challenge
+
+						</div>
+
+					</div>
 
 				<ul>
 
@@ -277,11 +1160,11 @@
 					</li>
 
 					<li>
-						<a href="#narrativa">Historia</a>
+						<a href="#historia">Historia</a>
 					</li>
 
 					<li>
-						<a href="#distritos">Distritos</a>
+						<a href="#misiones">Misiones</a>
 					</li>
 
 					<li>
@@ -304,40 +1187,36 @@
 
 				<div class="tag">
 
-					Misión interactiva • Tecnología • Cooperación
+					🎡 EDICIÓN ANIVERSARIO • PARQUE DE LA COSTA
 
 				</div>
 
 				<h1>
 
-					RESTAURÁ NEXUS
+					NEOCITY CHALLENGE<br>
+MISIÓN NEXUS
 
-				</h1>
+</h1>
 
 				<p>
 
-					NeoCity fue construida para conectar millones de vidas.
-					Pero una falla inesperada fragmentó el sistema que mantenía
-					la ciudad funcionando.
+					El aniversario del Parque de la Costa debía ser una celebración inolvidable.
 
-					Ahora, equipos de agentes tecnológicos deberán enfrentarse
-					a desafíos físicos, digitales y estratégicos para recuperar
-					los fragmentos perdidos antes de que NeoCity colapse.
+					Sin embargo, una anomalía en el sistema <strong>NEXUS</strong> alteró el funcionamiento del parque.
 
-					La ciudad necesita héroes.
-					La próxima misión podría comenzar con vos.
+					Las atracciones dejaron de ser simples espacios de entretenimiento y se transformaron en estaciones interactivas donde cada visitante deberá colaborar, resolver desafíos y recuperar los fragmentos perdidos del sistema antes de que el caos digital tome el control.
 
 				</p>
 
-				<a href="#inscripcion" class="btn">
+				<a href="#misiones" class="btn btn-primary">
 
-					Aceptar la misión
+					▶ Iniciar misión
 
 				</a>
 
-				<a href="#narrativa" class="btn btn-outline">
+				<a href="#historia" class="btn btn-secondary">
 
-					Descubrir la historia
+					⚡ Descubrir la historia
 
 				</a>
 
@@ -345,11 +1224,11 @@
 
 		</section>
 
-		<section id="narrativa">
+		<section id="historia">
 
 			<h2 class="section-title">
 
-				La caída de NEXUS
+				LA CAÍDA DE NEXUS
 
 			</h2>
 
@@ -357,12 +1236,9 @@
 
 				<p>
 
-					Año <strong>2035</strong>.
+					Durante la celebración del aniversario, el sistema central del parque detectó una falla crítica.
 
-					NeoCity es una de las ciudades inteligentes más avanzadas de Argentina.
-					Su inteligencia central, conocida como <span>NEXUS</span>,
-					coordina la energía, la información pública y la infraestructura digital
-					que conecta a millones de ciudadanos.
+					<strong>NEXUS</strong>, la inteligencia encargada de coordinar la experiencia interactiva, fragmentó información esencial y la dispersó por distintas atracciones.
 
 				</p>
 
@@ -370,15 +1246,7 @@
 
 					<p>
 
-						Durante una actualización global del sistema, una anomalía desconocida
-						fragmentó información esencial y la dispersó a través de distintos
-						sectores de la ciudad.
-
-						Sin NEXUS, NeoCity comenzó a perder estabilidad.
-
-						Las comunicaciones fallaron.
-						Los protocolos de seguridad dejaron de responder.
-						Los datos críticos desaparecieron.
+						Cada estación del recorrido pondrá a prueba la capacidad de los participantes para <span>trabajar en equipo</span>, resolver problemas, comunicarse eficazmente y utilizar herramientas tecnológicas para avanzar.
 
 					</p>
 
@@ -386,828 +1254,565 @@
 
 						<p>
 
-							Ante esta crisis, una nueva generación de agentes fue convocada.
-
-							No serán espectadores.
-
-							Serán protagonistas.
-
-							Deberán correr, resolver enigmas, colaborar con sus compañeros
-							y tomar decisiones bajo presión para recuperar cada fragmento perdido.
-
-							Cada desafío superado reconstruirá una parte del sistema.
-
-							Cada decisión acercará a NeoCity a la salvación.
+							NeoCity Challenge no es solamente un juego. Es una experiencia educativa, inmersiva e inclusiva donde la diversión y el aprendizaje se combinan para crear una misión inolvidable.
 
 						</p>
 
-						<br>
-
-							<p>
-
-								Solo aquellos equipos capaces de comunicarse, adaptarse y confiar
-								en sus compañeros lograrán restaurar el corazón digital de la ciudad.
-
-								<strong>
-
-									¿Estás listo para aceptar la misión?
-
-								</strong>
-
-							</p>
-
-						</div>
-
-		</section>
-		<!-- DISTRITOS -->
-
-		<section id="distritos">
-
-			<h2 class="section-title">
-				Los Distritos de NeoCity
-			</h2>
-
-			<div class="cards">
-
-				<div class="mission-card">
-
-					<div class="mission-icon">
-						🛡️
 					</div>
 
-					<h3>Distrito de Seguridad</h3>
-
-					<p>
-						El primer fragmento de NEXUS se encuentra protegido.
-						Los equipos deberán superar pruebas de coordinación,
-						precisión y confianza mutua.
-					</p>
-
-				</div>
-
-
-				<div class="mission-card">
-
-					<div class="mission-icon">
-						💻
-					</div>
-
-					<h3>Distrito Digital</h3>
-
-					<p>
-						Descifrá códigos QR, encontrá pistas ocultas y utilizá
-						herramientas tecnológicas para recuperar información perdida.
-					</p>
-
-				</div>
-
-
-				<div class="mission-card">
-
-					<div class="mission-icon">
-						🧩
-					</div>
-
-					<h3>Escape de Enigmas</h3>
-
-					<p>
-						Las respuestas no serán evidentes.
-						Combiná ideas, analizá información y resolvé acertijos
-						antes de que el tiempo se agote.
-					</p>
-
-				</div>
-
-
-				<div class="mission-card">
-
-					<div class="mission-icon">
-						⚡
-					</div>
-
-					<h3>Centro de Control</h3>
-
-					<p>
-						La misión definitiva.
-						Todos los fragmentos recuperados convergerán en el
-						desafío final para restaurar NEXUS.
-					</p>
-
-				</div>
-
-			</div>
-
 		</section>
+		<!-- MISIONES -->
 
+<section id="misiones">
 
-		<!-- CÓMO FUNCIONA -->
+    <h2 class="section-title">
+        MISIONES ACTIVAS
+    </h2>
 
-		<section id="experiencia">
+    <div class="missions-grid">
 
-			<h2 class="section-title">
-				Tu recorrido por NeoCity
-			</h2>
+        <div class="mission-card">
 
-			<div class="timeline">
+            <div class="mission-icon"></div>
 
-				<div class="timeline-item">
-					<span>01</span>
-					<h3>Registrate</h3>
-					<p>Recibí tu acreditación y conocé las reglas.</p>
-				</div>
+            <h3>Desafío del Vigía</h3>
 
-				<div class="timeline-item">
-					<span>02</span>
-					<h3>Formá tu equipo</h3>
-					<p>Distribuyan roles y preparen su estrategia.</p>
-				</div>
+            <p>
+                Superá pruebas de precisión y coordinación para recuperar
+                el primer fragmento de NEXUS.
+            </p>
 
-				<div class="timeline-item">
-					<span>03</span>
-					<h3>Explorá NeoCity</h3>
-					<p>Recorré los distintos sectores del evento.</p>
-				</div>
+        </div>
 
-				<div class="timeline-item">
-					<span>04</span>
-					<h3>Recuperá fragmentos</h3>
-					<p>Cada misión restaurará parte de NEXUS.</p>
-				</div>
+        <div class="mission-card">
 
-				<div class="timeline-item">
-					<span>05</span>
-					<h3>Superá el desafío final</h3>
-					<p>Enfrentá la prueba más compleja del evento.</p>
-				</div>
+            <div class="mission-icon"></div>
 
-				<div class="timeline-item">
-					<span>06</span>
-					<h3>Convertite en Champion</h3>
-					<p>La ciudad recordará a quienes lograron salvarla.</p>
-				</div>
+            <h3>Torbellino Digital</h3>
 
-			</div>
+            <p>
+                Descifrá pistas mediante códigos QR y herramientas
+                tecnológicas distribuidas por el parque.
+            </p>
 
-		</section>
+        </div>
 
+        <div class="mission-card">
 
-		<!-- HABILIDADES -->
+            <div class="mission-icon"></div>
 
-		<section id="habilidades">
+            <h3>Laberinto Cuántico</h3>
 
-			<h2 class="section-title">
-				Lo que desarrollarás
-			</h2>
+            <p>
+                Utilizá el pensamiento lógico y el trabajo en equipo
+                para resolver enigmas antes de que el tiempo termine.
+            </p>
 
-			<div class="cards">
+        </div>
 
-				<div class="skill-card">
-					<i class="fa-solid fa-brain"></i>
-					<h3>Pensamiento lógico</h3>
-					<p>Analizá situaciones y resolvé problemas.</p>
-				</div>
+        <div class="mission-card">
 
-				<div class="skill-card">
-					<i class="fa-solid fa-users"></i>
-					<h3>Trabajo en equipo</h3>
-					<p>Cooperación, empatía y liderazgo compartido.</p>
-				</div>
+            <div class="mission-icon"></div>
 
-				<div class="skill-card">
-					<i class="fa-solid fa-lightbulb"></i>
-					<h3>Creatividad</h3>
-					<p>Diseñá estrategias innovadoras.</p>
-				</div>
+            <h3>Centro de Control NEXUS</h3>
 
-				<div class="skill-card">
-					<i class="fa-solid fa-laptop-code"></i>
-					<h3>Competencias digitales</h3>
-					<p>Uso de QR y herramientas tecnológicas.</p>
-				</div>
+            <p>
+                Reuní todos los fragmentos obtenidos para restaurar el
+                sistema y completar la misión final.
+            </p>
 
-				<div class="skill-card">
-					<i class="fa-solid fa-stopwatch"></i>
-					<h3>Toma de decisiones</h3>
-					<p>Actuá bajo presión y administrá tiempos.</p>
-				</div>
+        </div>
 
-				<div class="skill-card">
-					<i class="fa-solid fa-comments"></i>
-					<h3>Comunicación</h3>
-					<p>Escuchá, coordiná y compartí ideas.</p>
-				</div>
+    </div>
 
-			</div>
+</section>
 
-		</section>
 
 
-		<!-- SPONSORS -->
+<!-- EXPERIENCIAS -->
 
-		<section id="sponsors">
+<section id="experiencias">
 
-			<h2 class="section-title">
-				Aliados de la misión
-			</h2>
+    <h2 class="section-title">
+        EXPERIENCIAS DEL ANIVERSARIO
+    </h2>
 
-			<p class="sponsor-text">
+    <div class="experience-grid">
 
-				NeoCity Challenge busca conectar instituciones educativas,
-				espacios culturales, organizaciones tecnológicas y empresas
-				comprometidas con la innovación y el aprendizaje.
+        <div class="experience-card">
 
-			</p>
+            <i class="fa-solid fa-camera"></i>
 
-			<div class="sponsor-grid">
+            <h3>Photopoints RGB</h3>
 
-				<div class="sponsor-box">
-					TU LOGO
-				</div>
+            <p>
+                Escenarios futuristas para capturar recuerdos inolvidables.
+            </p>
 
-				<div class="sponsor-box">
-					TU LOGO
-				</div>
+        </div>
 
-				<div class="sponsor-box">
-					TU LOGO
-				</div>
+        <div class="experience-card">
 
-				<div class="sponsor-box">
-					TU LOGO
-				</div>
+            <i class="fa-solid fa-gamepad"></i>
 
-			</div>
+            <h3>Zona Arcade NeoCity</h3>
 
-		</section>
+            <p>
+                Minijuegos y desafíos tecnológicos complementarios.
+            </p>
 
+        </div>
 
-		<style>
+        <div class="experience-card">
 
-			/* TARJETAS */
+            <i class="fa-solid fa-masks-theater"></i>
 
-			.cards{
-			display:grid;
-			grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-			gap:25px;
-			}
+            <h3>Shows Inmersivos</h3>
 
-			.mission-card,
-			.skill-card{
+            <p>
+                Personajes y espectáculos que expanden la narrativa.
+            </p>
 
-			background:var(--card);
+        </div>
 
-			backdrop-filter:blur(20px);
+        <div class="experience-card">
 
-			border:1px solid rgba(255,255,255,.08);
+            <i class="fa-solid fa-store"></i>
 
-			border-radius:25px;
+            <h3>Tienda Oficial</h3>
 
-			padding:35px;
+            <p>
+                Productos y recuerdos exclusivos del aniversario.
+            </p>
 
-			transition:.3s;
-			}
+        </div>
 
-			.mission-card:hover,
-			.skill-card:hover{
+    </div>
 
-			transform:translateY(-10px);
+</section>
 
-			box-shadow:0 0 35px rgba(0,212,255,.2);
 
-			}
 
-			.mission-icon{
-
-			font-size:3rem;
-
-			margin-bottom:20px;
-
-			}
-
-			.mission-card h3,
-			.skill-card h3{
-
-			margin-bottom:15px;
-
-			}
-
-			.mission-card p,
-			.skill-card p{
-
-			color:var(--gray);
-
-			line-height:1.8;
-
-			}
-
-			/* EXPERIENCIA */
-
-			.timeline{
-
-			display:grid;
-
-			grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-
-			gap:25px;
-
-			}
-
-			.timeline-item{
-
-			background:var(--card);
-
-			border-radius:25px;
-
-			padding:35px;
-
-			text-align:center;
-
-			border:1px solid rgba(255,255,255,.08);
-
-			}
-
-			.timeline-item span{
-
-			font-size:3rem;
-
-			font-weight:bold;
-
-			color:var(--cyan);
-
-			}
-
-			.timeline-item h3{
-
-			margin:20px 0;
-
-			}
-
-			.timeline-item p{
-
-			color:var(--gray);
-
-			}
-
-			/* HABILIDADES */
-
-			.skill-card{
-
-			text-align:center;
-
-			}
-
-			.skill-card i{
-
-			font-size:3rem;
-
-			color:var(--pink);
-
-			margin-bottom:20px;
-
-			}
-
-			/* SPONSORS */
-
-			.sponsor-text{
-
-			text-align:center;
-
-			color:var(--gray);
-
-			max-width:800px;
-
-			margin:auto auto 50px;
-
-			line-height:1.8;
-
-			}
-
-			.sponsor-grid{
-
-			display:grid;
-
-			grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-
-			gap:25px;
-
-			}
-
-			.sponsor-box{
-
-			background:var(--card);
-
-			border:1px solid rgba(255,255,255,.08);
-
-			border-radius:25px;
-
-			height:140px;
-
-			display:flex;
-
-			justify-content:center;
-
-			align-items:center;
-
-			font-size:1.5rem;
-
-			color:rgba(255,255,255,.5);
-
-			transition:.3s;
-
-			}
-
-			.sponsor-box:hover{
-
-			border-color:var(--cyan);
-
-			box-shadow:0 0 30px rgba(0,212,255,.2);
-
-			}
-
-		</style>
-		<style>
-		
-		.event-timeline,
-.footer-icons{
-    display:flex;
-    flex-wrap:wrap;
-    gap:25px;
-    justify-content:center;
-}
-
-.event-card,
-.award-card{
-    background:var(--card);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:25px;
-    padding:35px;
-    width:280px;
-    transition:.3s;
-}
-
-.event-card:hover,
-.award-card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 0 35px rgba(0,212,255,.2);
-}
-
-.event-card span{
-    color:var(--cyan);
-    font-size:2rem;
-    font-weight:bold;
-}
-
-.event-card h3,
-.award-card h3{
-    margin:20px 0;
-}
-
-.event-card p,
-.award-card p{
-    color:var(--gray);
-    line-height:1.8;
-}
-
-.register-box{
-    max-width:700px;
-    margin:auto;
-    text-align:center;
-    background:var(--card);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:30px;
-    padding:50px;
-}
-
-.register-box p{
-    color:var(--gray);
-    margin:20px 0 40px;
-}
-
-.register-box form{
-    display:flex;
-    flex-direction:column;
-    gap:20px;
-}
-
-.register-box input{
-    padding:18px;
-    border:none;
-    border-radius:12px;
-    background:#111827;
-    color:white;
-}
-
-.register-box button{
-    padding:18px;
-    border:none;
-    border-radius:12px;
-    background:linear-gradient(
-        90deg,
-        var(--cyan),
-        var(--purple)
-    );
-    color:white;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.register-box button:hover{
-    transform:translateY(-5px);
-}
-
-footer{
-    margin-top:100px;
-    padding:60px 20px;
-    text-align:center;
-    border-top:1px solid rgba(255,255,255,.08);
-}
-
-.footer-content p{
-    color:var(--gray);
-    max-width:700px;
-    margin:20px auto;
-    line-height:1.8;
-}
-
-.footer-icons a{
-    color:white;
-    font-size:2rem;
-    margin:10px;
-    transition:.3s;
-}
-
-.footer-icons a:hover{
-    color:var(--cyan);
-}
-
-.copyright{
-    margin-top:40px;
-}
-</style>
-		
-		<!-- CRONOGRAMA -->
+<!-- CRONOGRAMA -->
 
 <section id="cronograma">
 
-    <h2 class="section-title">
-        Cronograma de la Operación NEXUS
-    </h2>
+	<section id="cronograma">
 
-    <div class="event-timeline">
+		<h2 class="section-title">
+			OPERACIÓN NEXUS · CRONOGRAMA DEL EVENTO
+		</h2>
 
-        <div class="event-card">
-            <span>09:00</span>
-            <h3>Acreditación</h3>
-            <p>
-                Los agentes reciben sus credenciales y conocen las reglas de la misión.
-            </p>
-        </div>
+		<div class="schedule-grid">
 
-        <div class="event-card">
-            <span>09:30</span>
-            <h3>Briefing Inicial</h3>
-            <p>
-                Se revela la caída de NEXUS y comienza oficialmente la operación.
-            </p>
-        </div>
+			<!-- BLOQUE 1 -->
 
-        <div class="event-card">
-            <span>10:00</span>
-            <h3>Distritos Abiertos</h3>
-            <p>
-                Los equipos recorren NeoCity recuperando fragmentos del sistema.
-            </p>
-        </div>
+			<div class="schedule-card">
 
-        <div class="event-card">
-            <span>13:00</span>
-            <h3>Centro de Control</h3>
-            <p>
-                El desafío final pondrá a prueba todo lo aprendido.
-            </p>
-        </div>
+				<h3> Recepción y Acreditación</h3>
 
-        <div class="event-card">
-            <span>14:00</span>
-            <h3>Restauración de NEXUS</h3>
-            <p>
-                Se anuncian los equipos vencedores y la ciudad vuelve a la normalidad.
-            </p>
-        </div>
+				<div class="turno">
+					<strong>Turno 1:</strong> 11:00 – 11:15
+				</div>
 
-    </div>
+				<div class="turno">
+					<strong>Turno 2:</strong> 13:30 – 13:45
+				</div>
 
+				<div class="turno">
+					<strong>Turno 3:</strong> 16:00 – 16:15
+				</div>
+
+				<p>
+					Entrega de credenciales, conformación de equipos y bienvenida.
+				</p>
+
+			</div>
+
+
+			<!-- BLOQUE 2 -->
+
+			<div class="schedule-card">
+
+				<h3> Introducción a Misión NEXUS</h3>
+
+				<div class="turno">
+					<strong>Turno 1:</strong> 11:15 – 11:30
+				</div>
+
+				<div class="turno">
+					<strong>Turno 2:</strong> 13:45 – 14:00
+				</div>
+
+				<div class="turno">
+					<strong>Turno 3:</strong> 16:15 – 16:30
+				</div>
+
+				<p>
+					Presentación de la narrativa, explicación de reglas y objetivos.
+				</p>
+
+			</div>
+
+
+			<!-- BLOQUE 3 -->
+
+			<div class="schedule-card">
+
+				<h3> Distrito Digital</h3>
+
+				<div class="turno">
+					<strong>Turno 1:</strong> 11:30 – 11:50
+				</div>
+
+				<div class="turno">
+					<strong>Turno 2:</strong> 14:00 – 14:20
+				</div>
+
+				<div class="turno">
+					<strong>Turno 3:</strong> 16:30 – 16:50
+				</div>
+
+				<p>
+					Desafíos tecnológicos, códigos QR y resolución de pistas digitales.
+				</p>
+
+			</div>
+
+
+			<!-- BLOQUE 4 -->
+
+			<div class="schedule-card">
+
+				<h3> Distrito de Seguridad</h3>
+
+				<div class="turno">
+					<strong>Turno 1:</strong> 11:50 – 12:10
+				</div>
+
+				<div class="turno">
+					<strong>Turno 2:</strong> 14:20 – 14:40
+				</div>
+
+				<div class="turno">
+					<strong>Turno 3:</strong> 16:50 – 17:10
+				</div>
+
+				<p>
+					Pruebas físicas adaptadas que promueven coordinación y cooperación.
+				</p>
+
+			</div>
+
+
+			<!-- BLOQUE 5 -->
+
+			<div class="schedule-card">
+
+				<h3> Zona de Enigmas</h3>
+
+				<div class="turno">
+					<strong>Turno 1:</strong> 12:10 – 12:30
+				</div>
+
+				<div class="turno">
+					<strong>Turno 2:</strong> 14:40 – 15:00
+				</div>
+
+				<div class="turno">
+					<strong>Turno 3:</strong> 17:10 – 17:30
+				</div>
+
+				<p>
+					Resolución colaborativa de acertijos y desafíos de lógica.
+				</p>
+
+			</div>
+
+
+			<!-- BLOQUE 6 -->
+
+			<div class="schedule-card">
+
+				<h3> Rotación y Descanso</h3>
+
+				<div class="turno">
+					<strong>Turno 1:</strong> 12:30 – 12:45
+				</div>
+
+				<div class="turno">
+					<strong>Turno 2:</strong> 15:00 – 15:15
+				</div>
+
+				<div class="turno">
+					<strong>Turno 3:</strong> 17:30 – 17:45
+				</div>
+
+				<p>
+					Tiempo para reorganizar estrategias y preparar la etapa final.
+				</p>
+
+			</div>
+
+
+			<!-- BLOQUE 7 -->
+
+			<div class="schedule-card">
+
+				<h3> Centro de Control NEXUS</h3>
+
+				<div class="turno">
+					<strong>Turno 1:</strong> 12:45 – 13:05
+				</div>
+
+				<div class="turno">
+					<strong>Turno 2:</strong> 15:15 – 15:35
+				</div>
+
+				<div class="turno">
+					<strong>Turno 3:</strong> 17:45 – 18:05
+				</div>
+
+				<p>
+					Desafío final donde los equipos restauran el sistema NEXUS.
+				</p>
+
+			</div>
+
+
+			<!-- BLOQUE 8 -->
+
+			<div class="schedule-card">
+
+				<h3> Premiación y Cierre</h3>
+
+				<div class="turno">
+					<strong>Turno 1:</strong> 13:05 – 13:20
+				</div>
+
+				<div class="turno">
+					<strong>Turno 2:</strong> 15:35 – 15:50
+				</div>
+
+				<div class="turno">
+					<strong>Turno 3:</strong> 18:05 – 18:30
+				</div>
+
+				<p>
+					Reconocimientos, fotografía grupal y clausura oficial del evento.
+				</p>
+
+			</div>
+
+		</div>
+
+	</section>
 </section>
+		<h2 class="section-title">
+			Lo que desarrollarás
+		</h2>
+
+		<div class="cards">
+
+			<div class="skill-card">
+				<i class="fa-solid fa-brain"></i>
+				<h3>Pensamiento lógico</h3>
+				<p>Analizá situaciones y resolvé problemas.</p>
+			</div>
+
+			<div class="skill-card">
+				<i class="fa-solid fa-users"></i>
+				<h3>Trabajo en equipo</h3>
+				<p>Cooperación, empatía y liderazgo compartido.</p>
+			</div>
+
+			<div class="skill-card">
+				<i class="fa-solid fa-lightbulb"></i>
+				<h3>Creatividad</h3>
+				<p>Diseñá estrategias innovadoras.</p>
+			</div>
+
+			<div class="skill-card">
+				<i class="fa-solid fa-laptop-code"></i>
+				<h3>Competencias digitales</h3>
+				<p>Uso de QR y herramientas tecnológicas.</p>
+			</div>
+
+			<div class="skill-card">
+				<i class="fa-solid fa-stopwatch"></i>
+				<h3>Toma de decisiones</h3>
+				<p>Actuá bajo presión y administrá tiempos.</p>
+			</div>
+
+			<div class="skill-card">
+				<i class="fa-solid fa-comments"></i>
+				<h3>Comunicación</h3>
+				<p>Escuchá, coordiná y compartí ideas.</p>
+			</div>
+
+		</div>
+
+		</section>
 
 
-<!-- PREMIACIÓN -->
-
-<section id="premiacion">
-
-    <h2 class="section-title">
-        NeoCity Champion
-    </h2>
-
-    <div class="cards">
-
-        <div class="award-card">
-            <h3>🏆 Primer Puesto</h3>
-
-            <p>
-                Trofeo NeoCity Champion y medallas para todo el equipo.
-            </p>
-        </div>
-
-        <div class="award-card">
-            <h3>🥈 Segundo Puesto</h3>
-
-            <p>
-                Medallas de reconocimiento por desempeño destacado.
-            </p>
-        </div>
-
-        <div class="award-card">
-            <h3>🥉 Tercer Puesto</h3>
-
-            <p>
-                Certificado de mérito y reconocimiento especial.
-            </p>
-        </div>
-
-        <div class="award-card">
-            <h3>🤝 Premio Inclusión</h3>
-
-            <p>
-                Distinción al mejor trabajo colaborativo y solidario.
-            </p>
-        </div>
-
-    </div>
-
-</section>
 
 
-<!-- INSCRIPCIÓN -->
+		<!-- GALERÍA -->
 
-<section id="inscripcion">
+		<section id="galeria">
 
-    <h2 class="section-title">
-        Aceptá la misión
-    </h2>
+			<h2 class="section-title">
+				GALERÍA DE LA MISIÓN
+			</h2>
 
-    <div class="register-box">
+			<div class="gallery-grid">
 
-        <h3>
-            NeoCity necesita nuevos agentes.
-        </h3>
+				<img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800"
+				alt="Ambientación futurista">
 
-        <p>
-            Formá tu equipo y preparate para restaurar el sistema NEXUS.
-        </p>
+					<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800"
+					alt="Trabajo en equipo">
 
-        <form id="registerForm">
+						<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800"
+						alt="Tecnología">
 
-            <input
-                type="text"
-                placeholder="Nombre y Apellido"
-                required>
+							<img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=800"
+							alt="Celebración">
 
-            <input
-                type="email"
-                placeholder="Correo Electrónico"
-                required>
+							</div>
 
-            <input
-                type="text"
-                placeholder="Nombre del Equipo"
-                required>
-
-            <button type="submit">
-                Unirme a la misión
-            </button>
-
-        </form>
-
-    </div>
-
-</section>
+		</section>
 
 
-<!-- FOOTER -->
 
-<footer>
+		<!-- PREMIACIÓN -->
 
-    <div class="footer-content">
+		<section id="premiacion">
 
-        <h2>
-            NeoCity Challenge
-        </h2>
+			<h2 class="section-title">
+				NEOCITY CHAMPION
+			</h2>
 
-        <p>
+			<div class="champion-card">
 
-            Una experiencia inmersiva donde la tecnología,
-            la cooperación y la creatividad se convierten
-            en las herramientas para salvar una ciudad.
+				<div class="trophy">
+					<img src="https://www.clipartmax.com/png/full/135-1350828_drawn-trophy-world-cup-trophy-soccer-world-cup-png.png" alt="Trofeo">
 
-        </p>
+			</div>
 
-        <div class="footer-icons">
+				<h3>
+					Premiación Final
+				</h3>
 
-            <a href="#">
-                <i class="fa-brands fa-instagram"></i>
-            </a>
+				<p>
 
-            <a href="#">
-                <i class="fa-brands fa-facebook"></i>
-            </a>
+					Los equipos que logren restaurar el sistema NEXUS serán reconocidos
+					por su creatividad, cooperación y capacidad para superar desafíos.
 
-            <a href="#">
-                <i class="fa-brands fa-youtube"></i>
-            </a>
+				</p>
 
-            <a href="#">
-                <i class="fa-brands fa-discord"></i>
-            </a>
+			</div>
 
-        </div>
+		</section>
 
-        <p class="copyright">
-            © 2026 NeoCity Challenge · Todos los derechos reservados
-        </p>
 
-    </div>
 
-</footer>
+		<!-- INSCRIPCIÓN -->
+
+		<section id="inscripcion">
+
+			<h2 class="section-title">
+				ACTIVAR CREDENCIAL DE AGENTE
+			</h2>
+
+			<div class="terminal">
+
+				<div class="terminal-header">
+
+					● ● ● SISTEMA NEXUS
+
+				</div>
+
+				<form id="formAgente">
+
+					<input type="text"
+					placeholder="Nombre del agente"
+					required="">
+
+						<input type="email"
+						placeholder="Correo electrónico"
+						required="">
+
+							<input type="text"
+							placeholder="Nombre del equipo"
+							required="">
+
+								<button type="submit">
+
+									ACTIVAR CREDENCIAL
+
+								</button>
+
+							</form>
+
+			</div>
+
+		</section>
+
+
+
+		<!-- FOOTER -->
+
+		<footer>
+
+			<div class="footer-logo">
+
+				<img src="https://iconape.com/wp-content/files/ss/245951/png/245951.png"
+				alt="Parque de la Costa">
+
+					<h3>
+						NeoCity Challenge
+					</h3>
+
+				</div>
+
+			<p>
+
+				El aniversario debía ser una celebración.
+				Se convirtió en una leyenda.
+
+			</p>
+
+			<div class="footer-social">
+
+				<i class="fa-brands fa-instagram"></i>
+
+				<i class="fa-brands fa-facebook"></i>
+
+				<i class="fa-brands fa-youtube"></i>
+
+				<i class="fa-brands fa-discord"></i>
+
+			</div>
+
+			<p class="copyright">
+
+				© 2026 NeoCity Challenge · Edición Aniversario Parque de la Costa
+
+			</p>
+
+		</footer>
 		<script>
 
-			/* Brillo RGB siguiendo el mouse */
-
-			const glow = document.getElementById("glow");
-
-			document.addEventListener("mousemove", e => {
-
-			glow.style.left = (e.clientX - 200) + "px";
-			glow.style.top = (e.clientY - 200) + "px";
-
-			});
-
-
-			/* Formulario */
-
 			document
-			.getElementById("registerForm")
+			.getElementById("formAgente")
 			.addEventListener("submit", function(e){
 
 			e.preventDefault();
 
 			alert(
-			"¡Bienvenido, agente!\n\nTu equipo ha sido registrado para la Operación NEXUS."
+			"✓ Credencial activada.\n\nBienvenido a NeoCity Challenge.\nLa misión ha comenzado."
 			);
-
-			});
-
-
-			/* Animaciones al hacer scroll */
-
-			const observer = new IntersectionObserver(entries => {
-
-			entries.forEach(entry => {
-
-			if(entry.isIntersecting){
-
-			entry.target.animate(
-
-			[
-			{
-			opacity:0,
-			transform:"translateY(40px)"
-			},
-
-			{
-			opacity:1,
-			transform:"translateY(0)"
-			}
-
-			],
-
-			{
-			duration:700,
-			fill:"forwards"
-			}
-
-			);
-
-			}
-
-			});
-
-			});
-
-			document.querySelectorAll("section").forEach(section => {
-
-			section.style.opacity = 0;
-
-			observer.observe(section);
 
 			});
 
