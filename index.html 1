@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<title>Portfolio Sanchez Santiago</title>
+
+				<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+					<style>
+
+						:root{
+						--bg:#050816;
+						--card:#0f172a;
+						--accent:#00d4ff;
+						--text:#ffffff;
+						--gray:#94a3b8;
+						}
+
+						*{
+						margin:0;
+						padding:0;
+						box-sizing:border-box;
+						font-family:Inter,Segoe UI,sans-serif;
+						}
+
+						html{
+						scroll-behavior:smooth;
+						}
+
+						body{
+						background:var(--bg);
+						color:var(--text);
+						}
+
+						header{
+						position:fixed;
+						width:100%;
+						top:0;
+						z-index:1000;
+						backdrop-filter:blur(15px);
+						background:rgba(5,8,22,.7);
+						}
+
+						nav{
+						max-width:1200px;
+						margin:auto;
+						display:flex;
+						justify-content:space-between;
+						align-items:center;
+						padding:20px;
+						}
+
+						.logo{
+						font-size:1.5rem;
+						font-weight:bold;
+						color:var(--accent);
+						}
+
+						nav ul{
+						display:flex;
+						list-style:none;
+						gap:25px;
+						}
+
+						nav a{
+						color:white;
+						text-decoration:none;
+						}
+
+						.hero{
+						min-height:100vh;
+						display:flex;
+						align-items:center;
+						justify-content:center;
+						text-align:center;
+						padding:40px;
+						}
+
+						.hero-content{
+						max-width:900px;
+						}
+
+						.tag{
+						display:inline-block;
+						border:1px solid var(--accent);
+						color:var(--accent);
+						padding:10px 20px;
+						border-radius:50px;
+						margin-bottom:20px;
+						}
+
+						.hero h1{
+						font-size:clamp(3rem,8vw,6rem);
+						margin-bottom:20px;
+						}
+
+						.hero p{
+						color:var(--gray);
+						font-size:1.2rem;
+						margin-bottom:30px;
+						}
+
+						.btn{
+						display:inline-block;
+						padding:15px 30px;
+						background:var(--accent);
+						color:black;
+						text-decoration:none;
+						border-radius:10px;
+						font-weight:bold;
+						}
+
+						section{
+						max-width:1200px;
+						margin:auto;
+						padding:100px 20px;
+						}
+
+						.section-title{
+						text-align:center;
+						font-size:3rem;
+						margin-bottom:60px;
+						}
+
+						.about{
+						text-align:center;
+						color:var(--gray);
+						line-height:1.8;
+						max-width:800px;
+						margin:auto;
+						}
+
+						.skills{
+						display:grid;
+						grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+						gap:20px;
+						}
+
+						.skill{
+						background:var(--card);
+						padding:30px;
+						border-radius:20px;
+						text-align:center;
+						transition:.3s;
+						}
+
+						.skill:hover{
+						transform:translateY(-10px);
+						}
+
+						.skill i{
+						font-size:3rem;
+						color:var(--accent);
+						margin-bottom:15px;
+						}
+
+						.projects{
+						display:grid;
+						grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+						gap:25px;
+						}
+
+						.card{
+						background:var(--card);
+						border-radius:20px;
+						overflow:hidden;
+						transition:.3s;
+						}
+
+						.card:hover{
+						transform:translateY(-10px);
+						}
+
+						.card img{
+						width:100%;
+						height:220px;
+						object-fit:cover;
+						}
+
+						.card-content{
+						padding:20px;
+						}
+
+						.card-content h3{
+						margin-bottom:10px;
+						}
+
+						.card-content p{
+						color:var(--gray);
+						margin-bottom:15px;
+						}
+
+						.contact{
+						max-width:700px;
+						margin:auto;
+						}
+
+						input,
+						textarea{
+						width:100%;
+						padding:15px;
+						margin-bottom:15px;
+						border:none;
+						border-radius:10px;
+						background:#111827;
+						color:white;
+						}
+
+						button{
+						width:100%;
+						padding:15px;
+						border:none;
+						border-radius:10px;
+						background:var(--accent);
+						font-weight:bold;
+						cursor:pointer;
+						}
+
+						footer{
+						text-align:center;
+						padding:40px;
+						color:var(--gray);
+						}
+
+						.socials{
+						display:flex;
+						justify-content:center;
+						gap:20px;
+						margin-top:20px;
+						}
+
+						.socials a{
+						color:var(--accent);
+						font-size:1.5rem;
+						}
+
+						.glow{
+						position:fixed;
+						width:400px;
+						height:400px;
+						background:var(--accent);
+						filter:blur(200px);
+						opacity:.15;
+						pointer-events:none;
+						}
+
+						@media(max-width:768px){
+
+						nav{
+						flex-direction:column;
+						gap:15px;
+						}
+
+						nav ul{
+						flex-wrap:wrap;
+						justify-content:center;
+						}
+
+						}
+
+					</style>
+				</head>
+	<body>
+		<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+		<script>
+			emailjs.init("Service ID:
+			service_lcmkrcq
+			Original Service ID:
+			service_lcmkrcq
+			Template ID:
+			__ejs-test-mail-service__");
+		</script>
+		<div class="glow" id="glow"></div>
+
+		<header>
+			<nav>
+
+				<div class="logo">MI PORTFOLIO</div>
+
+				<ul>
+					<li>
+						<a href="#inicio">Inicio</a>
+					</li>
+					<li>
+						<a href="#sobre">Sobre mí</a>
+					</li>
+					<li>
+						<a href="#skills">Skills</a>
+					</li>
+					<li>
+						<a href="#proyectos">Proyectos</a>
+					</li>
+					<li>
+						<a href="#contacto">Contacto</a>
+					</li>
+				</ul>
+
+			</nav>
+		</header>
+
+		<section class="hero" id="inicio">
+
+			<div class="hero-content">
+
+				<div class="tag">
+					Desarrolador de videojuegos
+				</div>
+
+				<h1>
+					Hola, Soy Santiago Sanchez
+				</h1>
+
+				<p>
+					Desarrollo aplicaciones modernas con C#, HTML5,
+			JavaScript y tecnologías cloud. Tambien videojuegos con Unity y Godot Engine.
+				</p>
+
+				<a href="#proyectos" class="btn">
+					Ver proyectos
+				</a>
+
+			</div>
+
+		</section>
+
+		<section id="sobre">
+
+			<h2 class="section-title">
+				Sobre mí
+			</h2>
+
+			<p class="about">
+				Desarrollador Web y de Videojuegos con experiencia en HTML5, CSS, JavaScript, Unity y Godot Engine. 
+				 Especializado en la creación de sitios web interactivos, interfaces modernas y videojuegos 2D/3D.
+				 Apasionado por el desarrollo de experiencias digitales innovadoras, combinando diseño, programación
+				 y creatividad para construir proyectos funcionales y atractivos.
+			</p>
+
+		</section>
+
+		<section id="skills">
+
+			<h2 class="section-title">
+				Tecnologías
+			</h2>
+
+			<div class="skills">
+
+				<div class="skill">
+					<i class="fa-brands fa-microsoft"></i>
+					<h3>C#</h3>
+				</div>
+
+				<div class="skill">
+					<i class="fa-solid fa-robot"></i>
+					<h3>Godot Engine</h3>
+				</div>
+
+				<div class="skill">
+					<i class="fa-solid fa-cube"></i>
+					<h3>Unity</h3>
+				</div>
+
+				<div class="skill">
+					<i class="fa-brands fa-js"></i>
+					<h3>JavaScript</h3>
+				</div>
+
+				<div class="skill">
+					<i class="fa-brands fa-html5"></i>
+					<h3>HTML5</h3>
+				</div>
+
+				<div class="skill">
+					<i class="fa-brands fa-css3-alt"></i>
+					<h3>CSS3</h3>
+				</div>
+
+			</div>
+
+		</section>
+
+		<section id="proyectos">
+
+			<h2 class="section-title">
+				Proyectos
+			</h2>
+
+			<div class="projects">
+
+				<div class="card">
+					<img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/6ded0954-c083-45cf-a8e5-b47390e9b280/d54whq5-dfa4017e-8775-4503-bdc2-fe37136d9e98.png/v1/fill/w_256,h_256,q_80,strp/rpg_maker_xp_hd_icon_by_starwingcorona_d54whq5-fullview.jpg">
+						<div class="card-content">
+							<h3>RPG Maker XP</h3>
+							<p>Desarrollo en equipo de un videojuego en RPG Maker XP.</p>
+							<a class="btn" href="https://drive.google.com/file/d/17Mh5FUfYwZeD-OVaN_4ZyqGi3_yxUsqV/view">Ver más</a>
+						</div>
+					</div>
+
+				<div class="card">
+					<img src="https://tse3.mm.bing.net/th/id/OIP.vcQcGKEvUa8rwZ6IZnYCGQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3">
+						<div class="card-content">
+							<h3>Unity</h3>
+							<p>Desarrollo en equipo de un videojuego en Unity.</p>
+							<a class="btn" href="#">Ver más</a>
+						</div>
+					</div>
+
+				<div class="card">
+					<img src="https://amador.edu.do/wp-content/uploads/2020/11/scratch.png">
+						<div class="card-content">
+							<h3>Scratch</h3>
+							<p>Desarrollo un videojuego en Scratch.</p>
+							<a class="btn" href="https://scratch.mit.edu/projects/1292927727">Ver más</a>
+						</div>
+					</div>
+				<div class="card">
+					<img src="https://img.youtube.com/vi/ID_DEL_VIDEO/maxresdefault.jpg">
+						<div class="card-content">
+							<h3>Gameplay del Proyecto</h3>
+							<p>Video demostrativo del desarrollo y funcionamiento del videojuego.</p>
+							<a class="btn" href="https://www.youtube.com/watch?v=TU_VIDEO" target="_blank">
+								Ver video
+							</a>
+						</div>
+					</div>
+				<div class="card">
+					<img src="https://img.youtube.com/vi/ID_DEL_VIDEO/maxresdefault.jpg">
+						<div class="card-content">
+							<h3>Gameplay del Proyecto</h3>
+							<p>Video demostrativo del desarrollo y funcionamiento del videojuego.</p>
+							<a class="btn" href="https://www.youtube.com/watch?v=TU_VIDEO" target="_blank">
+								Ver video
+							</a>
+						</div>
+					</div>
+				<div class="card">
+					<img src="https://img.youtube.com/vi/ID_DEL_VIDEO/maxresdefault.jpg">
+						<div class="card-content">
+							<h3>Gameplay del Proyecto</h3>
+							<p>Video demostrativo del desarrollo y funcionamiento del videojuego.</p>
+							<a class="btn" href="https://www.youtube.com/watch?v=TU_VIDEO" target="_blank">
+								Ver video
+							</a>
+						</div>
+					</div>
+
+			</div>
+
+		</section>
+
+		<section id="contacto">
+
+			<h2 class="section-title">
+				Contacto
+			</h2>
+
+			<div class="contact">
+				<form id="contactForm">
+
+					<input type="text" id="nombre" placeholder="Nombre" required="">
+
+						<input type="email" id="email" placeholder="Correo electrónico" required="">
+
+							<textarea id="mensaje" rows="6" placeholder="Mensaje" required=""></textarea>
+
+							<button type="submit">
+								Enviar mensaje
+							</button>
+
+						</form>
+
+				<div class="socials">
+
+					<a href="#">
+						<i class="fa-brands fa-github"></i>
+					</a>
+					<a href="https://www.linkedin.com/in/santiago-sanchez-a4506931b/">
+						<i class="fa-brands fa-linkedin"></i>
+					</a>
+					<a href="https://www.instagram.com/__santiago_sanchez/">
+						<i class="fa-brands fa-instagram"></i>
+					</a>
+
+				</div>
+
+			</div>
+
+		</section>
+
+		<footer>
+			© 2023 - Portfolio 
+		</footer>
+
+		<script>
+
+			document
+			.getElementById("contactForm")
+			.addEventListener("submit",e=>{
+			e.preventDefault();
+			alert("Mensaje enviado correctamente");
+			});
+
+			const glow=document.getElementById("glow");
+
+			document.addEventListener("mousemove",(e)=>{
+			glow.style.left=e.clientX-200+"px";
+			glow.style.top=e.clientY-200+"px";
+			});
+
+			const observer=new IntersectionObserver(entries=>{
+			entries.forEach(entry=>{
+			if(entry.isIntersecting){
+			entry.target.animate(
+			[
+			{opacity:0,transform:"translateY(40px)"},
+			{opacity:1,transform:"translateY(0px)"}
+			],
+			{
+			duration:700,
+			fill:"forwards"
+			}
+			);
+			}
+			});
+			});
+
+			document.querySelectorAll("section").forEach(el=>{
+			el.style.opacity=0;
+			observer.observe(el);
+			});
+
+		</script>
+		<script>
+
+			<script>
+
+				emailjs.init({
+				publicKey: "TU_PUBLIC_KEY"
+				});
+
+				const formulario = document.getElementById("contactForm");
+				const estado = document.getElementById("estado");
+
+				formulario.addEventListener("submit", function(e){
+
+				e.preventDefault();
+
+				estado.textContent = "Enviando mensaje...";
+
+				emailjs.send(
+				"TU_SERVICE_ID",
+				"TU_TEMPLATE_ID",
+				{
+				from_name: document.getElementById("nombre").value,
+				from_email: document.getElementById("email").value,
+				message: document.getElementById("mensaje").value
+				}
+				)
+				.then(function(){
+
+				estado.textContent = "✅ Mensaje enviado correctamente";
+				formulario.reset();
+
+				})
+				.catch(function(error){
+
+				estado.textContent = "❌ Error al enviar el mensaje";
+				console.error("Error:", error);
+
+				});
+
+				});
+
+			</script>
+
+		</script>
+
+	</body>
+</html>
